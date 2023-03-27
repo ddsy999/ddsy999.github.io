@@ -307,7 +307,7 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 
-<h2 id="Hexo-BlogRepo-를-Git에-공유하기"><a href="#Hexo-BlogRepo-를-Git에-공유하기" class="headerlink" title="Hexo BlogRepo 를 Git에 공유하기"></a>Hexo BlogRepo 를 Git에 공유하기</h2><p>먼저 themes를 git으로 다운받으면 themes 폴더에 .git이 남아서 정적인 상태로 git을 올릴수가 없다.<br>그러면 submodule이라는 상태로 공유되고 우리는 themes&#x2F;<strong><strong><strong>_config.yml</strong></strong></strong> 의 ****************************************파일 수정해야 하는데 </p>
+<h2 id="Hexo-BlogRepo-를-Git에-공유하기"><a href="#Hexo-BlogRepo-를-Git에-공유하기" class="headerlink" title="Hexo BlogRepo 를 Git에 공유하기"></a>Hexo BlogRepo 를 Git에 공유하기</h2><p>먼저 themes를 git으로 다운받으면 themes 폴더에 .git이 남아서 정적인 상태로 git을 올릴수가 없다.<br>그러면 submodule이라는 상태로 공유되고 우리는 themes&#x2F;<strong>_config.yml</strong> 의 파일 수정해야 하는데 </p>
 <p>그런 수정사항은 반영되지 않고 올라가게 된다. </p>
 <p>따라서 </p>
 <blockquote>
@@ -316,7 +316,6 @@
 <p>또한 올려진 BlogRepo를 다른곳에서 받았을 경우 다운받고 생성된 폴더에서 Git Bash를 열고 다음과 같이 hexo를 깔아야 한다</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
         </div>
 
         
@@ -328,6 +327,16 @@
 
             </section>
         
+        <section>
+            <script src="https://utteranc.es/client.js"
+                repo="ddsy999/BlogComment"
+                issue-term="pathname"
+                label="Comments"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </section>
         <section class="post-tags">
             <div>
                 <span>Tag(s):</span>
