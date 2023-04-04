@@ -748,15 +748,6 @@ header label {
 .post-content {
   padding-top: 2rem;
   text-align: justify;
-/*code, pre
-    padding 7px
-    font-size 13px
-    font-family Consolas, Monaco, Menlo, Consolas, monospace
-  */
-/*code
-    padding 3px 5px
-    border-radius 4px !important
-*/
 }
 .post-content h2,
 .post-content h3,
@@ -811,16 +802,15 @@ header label {
   color: #fff;
   text-decoration: underline;
 }
+.post-content code,
 .post-content pre {
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: Consolas, Monaco, Menlo, "Ubuntu Mono", "Liberation Mono", monospace;
+  padding: 7px;
   font-size: 13px;
-  line-height: 1.5;
-  overflow-x: auto;
-  padding: 1em;
-  white-space: pre-wrap;
+  font-family: Consolas, Monaco, Menlo, Consolas, monospace;
+}
+.post-content code {
+  padding: 3px 5px;
+  border-radius: 4px;
 }
 .post-content figure.highlight {
   margin: 1em 0;
@@ -983,10 +973,11 @@ header label {
   border-radius: 4px;
   color: #c7254e;
   background: #f8f5ec;
+  border-radius: 4px;
 }
 .dark-theme .post-content code {
   color: #fffe28;
-  background: #787575;
+  background: #000;
 }
 .post-content h1 code,
 .post-content h2 code,
@@ -1031,6 +1022,13 @@ header label {
 }
 .post-content figure.highlight .code pre {
   margin: 0 10px;
+  border-radius: 4px;
+  background-color: #292a2d;
+  color: #fff;
+  overflow-x: auto;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  padding: 3px 5px;
 }
 .post-content figure.highlight .gutter {
   width: 10px;
