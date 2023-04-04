@@ -748,6 +748,15 @@ header label {
 .post-content {
   padding-top: 2rem;
   text-align: justify;
+/*code, pre
+    padding 7px
+    font-size 13px
+    font-family Consolas, Monaco, Menlo, Consolas, monospace
+  */
+/*code
+    padding 3px 5px
+    border-radius 4px !important
+*/
 }
 .post-content h2,
 .post-content h3,
@@ -758,7 +767,7 @@ header label {
   padding-bottom: 0.3em;
 }
 .post-content h1::before {
-  content: "#";
+  content: "⚡️";
   margin-right: 5px;
   color: #2d96bd;
 }
@@ -766,7 +775,7 @@ header label {
   color: #eee;
 }
 .post-content h2::before {
-  content: "#";
+  content: "💡";
   margin-right: 5px;
   color: #2d96bd;
 }
@@ -802,15 +811,16 @@ header label {
   color: #fff;
   text-decoration: underline;
 }
-.post-content code,
 .post-content pre {
-  padding: 7px;
-  font-size: 13px;
-  font-family: Consolas, Monaco, Menlo, Consolas, monospace;
-}
-.post-content code {
-  padding: 3px 5px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
   border-radius: 4px;
+  font-family: Consolas, Monaco, Menlo, "Ubuntu Mono", "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 1em;
+  white-space: pre-wrap;
 }
 .post-content figure.highlight {
   margin: 1em 0;
@@ -965,6 +975,7 @@ header label {
   padding: 7px;
   font-size: 17px;
   font-family: Consolas, Monaco, Menlo, Consolas, monospace;
+  border-radius: 4px;
 }
 .post-content code {
   line-height: 1.7em;
