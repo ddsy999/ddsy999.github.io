@@ -1019,6 +1019,12 @@ header label {
   border: 0;
   width: 100%;
   border-collapse: collapse;
+  background: #f8f5ec;
+}
+.dark-theme .post-content figure.highlight table,
+.dark-theme .post-content figure.highlight tr,
+.dark-theme .post-content figure.highlight td {
+  background: #292a2d;
 }
 .post-content figure.highlight .code pre {
   margin: 0 10px;
@@ -1027,15 +1033,11 @@ header label {
   color: #fff;
   overflow-x: auto;
   line-height: 1.5;
-  border: 1px solid #ddd;
+  border: 1px solid #f4f4f4;
   padding: 3px 5px;
 }
 .post-content figure.highlight .gutter {
-  width: 10px;
-  color: #d0d0d0;
-}
-.post-content figure.highlight .gutter pre {
-  margin: 0;
+  display: none;
 }
 .post-tags {
   padding: 1rem 0 1rem;
