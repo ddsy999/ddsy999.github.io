@@ -13,7 +13,7 @@
 
 
 
-<title>Raspberry Pi 설치 &amp; openCV 설치 &amp; motion 설치 | ForPolymath</title>
+<title>ForPolymath</title>
 
 
 
@@ -164,76 +164,11 @@
                 <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Raspberry Pi 설치 &amp; openCV 설치 &amp; motion 설치</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -242,60 +177,37 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 26, 2023&nbsp;&nbsp;18:04:51</a>
+                        Date: <a href="#">April 8, 2023&nbsp;&nbsp;18:57:11</a>
                         </span>
                     
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/Blog/">Blog</a>
-                            
-                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h1 id="Raspberry-Pi-설치"><a href="#Raspberry-Pi-설치" class="headerlink" title="Raspberry Pi 설치"></a>Raspberry Pi 설치</h1><p>작성 일시: 2023년 3월 31일 오후 11:20<br>태그:  미완성, Blog글</p>
-<h2 id="Raspberry-Pi-설치-1"><a href="#Raspberry-Pi-설치-1" class="headerlink" title="Raspberry Pi 설치"></a>Raspberry Pi 설치</h2><ul>
-<li><p>혹시 모를 기록 삭제를 대비해 정리하는 글이다.</p>
-<p>  그냥 아래의 잘 정리된 유투브 동영상을 보는것이 좋다 유투브영상이 사라질 수 있어서 적는다.</p>
-<p>  <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tenLLerqop8">https://www.youtube.com/watch?v=tenLLerqop8</a></p>
-</li>
-</ul>
-<p>준비물</p>
-<ol>
-<li>micro SD 카드 16Gb 이상 </li>
-<li>micro SD 카드 리더기 (USB인식 할 수 있는)</li>
-</ol>
-<h3 id="Raspberry-Pi-OS-다운로드"><a href="#Raspberry-Pi-OS-다운로드" class="headerlink" title="Raspberry Pi OS 다운로드"></a>Raspberry Pi OS 다운로드</h3><ol>
-<li><a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/">라즈베리파이 사이트</a> 에 접속한다. </li>
-<li>Download for window후 imager 설치 </li>
-<li>Erase 기능 사용하여 micro SD 카드 포맷 </li>
-<li>Raspberry PI OS other → FULL 선택 후 쓰기 선택</li>
-</ol>
-<h3 id="openCV-설치"><a href="#openCV-설치" class="headerlink" title="openCV 설치"></a>openCV 설치</h3><ol>
-<li>라즈베리 파이 업데이트 : <code>sudo apt-get -y update &amp;&amp; sudo apt-get -y upgrade</code> </li>
-<li>openCV 설치 : <code>sudo apt install python3-opencv</code></li>
-</ol>
-<h3 id="motion-설치"><a href="#motion-설치" class="headerlink" title="motion 설치"></a>motion 설치</h3><ol>
-<li>motion 설치 : <code>sudo apt-get install motion</code></li>
-</ol>
-<h3 id="motion-conf-수정"><a href="#motion-conf-수정" class="headerlink" title="motion.conf 수정"></a>motion.conf 수정</h3><ol>
-<li>sudo nano &#x2F;etc&#x2F;motion&#x2F;motion.conf 으로 설정파일 접근</li>
-<li>deamon off → on 으로 변경 </li>
-<li>framerate 100 으로 수정 </li>
-<li>stream_localhost off 으로 수정 </li>
-<li><del>movie_output off로 수정한다.</del></li>
-<li>webcontrol_localhost off</li>
-</ol>
-<h3 id="라즈베리파이-동작시-motion-켜지게-하기"><a href="#라즈베리파이-동작시-motion-켜지게-하기" class="headerlink" title="라즈베리파이 동작시 motion 켜지게 하기"></a>라즈베리파이 동작시 motion 켜지게 하기</h3><ol>
-<li>sudo nano &#x2F;etc&#x2F;default&#x2F;motion 접근 해서 start_motion_daemon&#x3D;yes 작성하고 저장</li>
-<li>sudo nano &#x2F;etc&#x2F;rc.local 접근 <code>exit 0</code> 바로 위에 <code>sudo motion</code> 작성하고 저장 </li>
-<li>sudo chmod 777 &#x2F;var&#x2F;lib&#x2F;motion</li>
-</ol>
+            <p>$\frac{\partial}{\partial \beta_j} |X\beta|^2 &#x3D; \frac{\partial}{\partial \beta_j} (X\beta)^T(X\beta) &#x3D; 2X_j^T(X\beta)$</p>
+<p>$\frac{\partial}{\partial \beta_j} |X\beta| &#x3D; \frac{1}{|X\beta|}\frac{\partial}{\partial \beta_j} (X\beta)^T(X\beta) &#x3D; \frac{2X_j^T(X\beta)}{2|X\beta|} &#x3D; \frac{X_j^T(X\beta)}{|X\beta|}$</p>
+<p>$\frac{\partial}{\partial \beta_j} Y^TX\beta &#x3D; Y^TX_j$</p>
+<p>$\frac{\partial}{\partial \beta_j} f(\beta) &#x3D; \frac{\frac{\partial}{\partial \beta_j} (Y^TX\beta)|X\beta|^2 - (Y^TX\beta)\frac{\partial}{\partial \beta_j} |X\beta|^2}{|X\beta|^4}$</p>
+<p>$(Y^TX_j)|X\beta|^2 - (Y^TX\beta) \frac{X_j^T(X\beta)}{|X\beta|}$</p>
+<p>$\frac{\partial}{\partial \beta_j} |X\beta|^2$ </p>
+<p>$\frac{ Y^tX\beta*Y^tX\beta}{\beta^tX^tX\beta}$</p>
+<p>$\frac{\partial}{\partial \beta_j} \left(\frac{(Y^TX\beta)^2}{\beta^tX^tX\beta}\right)$</p>
+<p>$T &#x3D; \max { \sqrt{n} |\bar{X} - \theta_0|, \sqrt{n} |\bar{X} - (1 - \theta_0)|}$</p>
+<p>$A &#x3D; \left[a_1, b_1\right] \cup \left[a_2, b_2\right] &#x3D; \left[\theta_0 - c_1, \theta_0 + c_2\right] \cup \left(-\infty, \theta_0 - c_1\right] \cup \left[\theta_0 + c_2, \infty\right)$</p>
+<p>(1) 풀이 2종오류의 확률을 구하라 유의수준 5%  </p>
+<p>2종오류확률은 $P(H_0 채택|H_1 이 맞는 상황)$ 이다, </p>
+<p>상황을 점검하면 아래와 같다. </p>
+<p>위 문제에서 귀무가설과 대립가설은 $H_0 &#x3D; 1500$ , $H_1&#x3D;1600$ 이다 </p>
+<p>기각역은 검정통계량이 $z_{\alpha_{0.05}}$ 보다 작은거 </p>
+<p>$H_0$ 검정 통계량을 $T$ 라고하면 $T &#x3D; \frac{\bar{x}-1500}{\frac{200}{\sqrt{n}}}$ 이고 </p>
+<p>정리하면 $H_0$ 기각역은 ${ T&gt; z_{\alpha_{0.05}}}$ 이다. </p>
+<p>이제 문제를 풀면 </p>
+<p>$$<br>\begin{aligned}<br>P(H_0 채택|H_1 이 맞는 상황) &amp;&#x3D;  P(H_0\ 기각역에 \ 안속함 , \mu &#x3D; 1600) \<br>&amp; &#x3D; P(  T \leq z_{\alpha_{0.05}} ,\mu &#x3D; 1600 ) \<br>&amp; &#x3D; P( \frac{\bar{x}-1500}{\frac{200}{\sqrt{n}}} \leq z_{\alpha_{0.05}} ,\mu &#x3D; 1600 ) \<br>그러나 H_1 상에서 진짜 평균은 1600 이고 &amp;이상황이면 -1500 을하면 정규분포가 되는게아니라 -1600을 해야 정규 분포를 따른다.\<br> &amp;&#x3D; P( \frac{\bar{x}-1600+100}{\frac{200}{\sqrt{n}}} \leq z_{\alpha_{0.05}} ,\mu &#x3D; 1600 ) \<br>&amp;&#x3D; P( Z+\frac{100}{\frac{200}{\sqrt{30}}} \leq z_{\alpha_{0.05}}  ) \<br>&amp;&#x3D; P( Z+\frac{\sqrt{30}}{2} \leq z_{\alpha_{0.05}}  ) \</p>
+<p>&amp;&#x3D; P( Z \leq z_{\alpha_{0.05}} - \frac{\sqrt{30}}{2} ) \<br>&amp;&#x3D; P( Z \leq 1.645-  2.738613 ) \<br>\end{aligned}<br>$$</p>
+<p>$P(H_0 채택|H_1 이 맞는 상황)$</p>
+<p>import cv2<br>import numpy as np<br>def tracking():<br>    cap &#x3D; cv2.VideoCapture(0)<br>    cap.set(3,320)<br>    cap.set(4,240)<br>    while True:<br>        ret,frame &#x3D; cap.read()<br>        cv2.imshow(‘video’,frame)<br>        if cv2.waitKey(1)&amp; 0xff &#x3D;&#x3D; ord(‘q’):<br>            break<br>    cv2.destroyAllwindows()<br>tracking()</p>
 
         </div>
 
@@ -323,14 +235,6 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/tags/Raspberry-Pi/"># Raspberry Pi</a>
-                    
-                        <a href="/tags/opencv/"># opencv</a>
-                    
-                        <a href="/tags/motion/"># motion</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -341,10 +245,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/03/26/Hexo%20Blog%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/">Hexo GitBlog 시작하기</a>
             
-            
-            <a class="next" rel="next" href="/2023/03/26/Raspberry%20Pi%20%EC%9B%90%EA%B2%A9%EC%9D%B4%EC%9A%A9%20w%20VNC/">Hello World</a>
+            <a class="next" rel="next" href="/2023/03/26/Hexo%20Blog%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/">Hexo GitBlog 시작하기</a>
             
         </section>
 
