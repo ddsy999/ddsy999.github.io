@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | ForPolymath</title>
+<title>Raspberry Pi 원격이용 w VNC | ForPolymath</title>
 
 
 
@@ -233,7 +233,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">Raspberry Pi 원격이용 w VNC</h1>
             
                 <div class="post-meta">
                     
@@ -242,28 +242,35 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 26, 2023&nbsp;&nbsp;14:08:38</a>
+                        Date: <a href="#">May 1, 2023&nbsp;&nbsp;18:04:51</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Blog/">Blog</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <h1 id="Raspberry-Pi-원격이용-w-VNC"><a href="#Raspberry-Pi-원격이용-w-VNC" class="headerlink" title="Raspberry Pi 원격이용 w. VNC"></a>Raspberry Pi 원격이용 w. VNC</h1><p>작성 일시: 2023년 4월 26일 오후 10:08<br>태그: Blog글</p>
+<h2 id="Raspberry-Pi-원격-접속-이용을-VNC을-이용해서-해보자"><a href="#Raspberry-Pi-원격-접속-이용을-VNC을-이용해서-해보자" class="headerlink" title="Raspberry Pi 원격 접속 이용을 VNC을 이용해서 해보자"></a>Raspberry Pi 원격 접속 이용을 VNC을 이용해서 해보자</h2><p>라즈베리파이를 Window 를 이용하여 원격 연결을 할 수 있게한다</p>
+<h3 id="VNC-Viewer-설치"><a href="#VNC-Viewer-설치" class="headerlink" title="VNC Viewer 설치"></a>VNC Viewer 설치</h3><p>VNC 연결을 할 수 있게 하는 프로그램을 설치한다 </p>
+<p><a target="_blank" rel="noopener" href="https://www.realvnc.com/en/connect/download/viewer/">VNC viewer 다운로드 사이트</a></p>
+<h3 id="VNC-연결"><a href="#VNC-연결" class="headerlink" title="VNC 연결"></a>VNC 연결</h3><p>SSH로 라즈베리파이를 연결하고나서 다음의 명령어를 입력한다. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -geometry 1920x1080</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>뒤에 붙은 해상도는 본인의 컴퓨터의 해상도를 입력해 준다. </p>
+<p><strong>명령어 입력후 나오는 제일 끝단의 IP의 주소를 기억해둔다.</strong> </p>
+<p>ex) xxx.xxx.xx.xx:1</p>
+<p>이후 VNC 프로그램상에서 위에 적어두었던 IP주소를 입력하여 원격접속을 한다. </p>
+<p>참고사이트 : </p>
+<p><a target="_blank" rel="noopener" href="https://webnautes.tistory.com/549">https://webnautes.tistory.com/549</a></p>
 
         </div>
 
@@ -291,6 +298,14 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/Raspberry-Pi/"># Raspberry Pi</a>
+                    
+                        <a href="/tags/opencv/"># opencv</a>
+                    
+                        <a href="/tags/motion/"># motion</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -301,8 +316,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/03/26/Raspberry%20Pi%20%EC%84%A4%EC%B9%98%20&%20openCV%20%EC%84%A4%EC%B9%98%20&%20motion%20%EC%84%A4%EC%B9%98/">Raspberry Pi 설치 & openCV 설치 & motion 설치</a>
             
+            <a class="next" rel="next" href="/2023/04/08/TEST/"></a>
             
         </section>
 
