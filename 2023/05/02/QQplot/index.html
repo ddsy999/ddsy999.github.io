@@ -13,7 +13,7 @@
 
 
 
-<title>Raspberry Pi 원격이용 w VNC | ForPolymath</title>
+<title>QQplot 이란? | ForPolymath</title>
 
 
 
@@ -233,7 +233,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Raspberry Pi 원격이용 w VNC</h1>
+            <h1 class="post-title">QQplot 이란?</h1>
             
                 <div class="post-meta">
                     
@@ -242,14 +242,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">May 1, 2023&nbsp;&nbsp;18:04:51</a>
+                        Date: <a href="#">May 2, 2023&nbsp;&nbsp;18:04:51</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Blog/">Blog</a>
+                                <a href="/categories/Statistic/">Statistic</a>
                             
                         </span>
                     
@@ -258,20 +258,59 @@
         </header>
 
         <div class="post-content">
-            <h1 id="Raspberry-Pi-원격이용-w-VNC"><a href="#Raspberry-Pi-원격이용-w-VNC" class="headerlink" title="Raspberry Pi 원격이용 w. VNC"></a>Raspberry Pi 원격이용 w. VNC</h1><p>작성 일시: 2023년 4월 26일 오후 10:08<br>태그: Blog글</p>
-<h2 id="Raspberry-Pi-원격-접속-이용을-VNC을-이용해서-해보자"><a href="#Raspberry-Pi-원격-접속-이용을-VNC을-이용해서-해보자" class="headerlink" title="Raspberry Pi 원격 접속 이용을 VNC을 이용해서 해보자"></a>Raspberry Pi 원격 접속 이용을 VNC을 이용해서 해보자</h2><p>라즈베리파이를 Window 를 이용하여 원격 연결을 할 수 있게한다</p>
-<h3 id="VNC-Viewer-설치"><a href="#VNC-Viewer-설치" class="headerlink" title="VNC Viewer 설치"></a>VNC Viewer 설치</h3><p>VNC 연결을 할 수 있게 하는 프로그램을 설치한다 </p>
-<p><a target="_blank" rel="noopener" href="https://www.realvnc.com/en/connect/download/viewer/">VNC viewer 다운로드 사이트</a></p>
-<h3 id="VNC-연결"><a href="#VNC-연결" class="headerlink" title="VNC 연결"></a>VNC 연결</h3><p>SSH로 라즈베리파이를 연결하고나서 다음의 명령어를 입력한다. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -geometry 1920x1080</span><br></pre></td></tr></table></figure>
-
-<p>뒤에 붙은 해상도는 본인의 컴퓨터의 해상도를 입력해 준다. </p>
-<p><strong>명령어 입력후 나오는 제일 끝단의 IP의 주소를 기억해둔다.</strong> </p>
-<p>ex) xxx.xxx.xx.xx:1</p>
-<p>이후 VNC 프로그램상에서 위에 적어두었던 IP주소를 입력하여 원격접속을 한다. </p>
-<p>참고사이트 : </p>
-<p><a target="_blank" rel="noopener" href="https://webnautes.tistory.com/549">https://webnautes.tistory.com/549</a></p>
-
+            <h2 id="QQ-plot-이란"><a href="#QQ-plot-이란" class="headerlink" title="QQ-plot 이란?"></a>QQ-plot 이란?</h2><p> Data가  특정 분포를 따르는지 시각화 분석을 하는 Plot이다. </p>
+<h3 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h3><p>만약 데이터 100개를 관측하였는데 정규분포를 따르는지 궁금하다고 하자</p>
+<p>정규분포의 parameter는 2가지 $\mu,\sigma$ 로 이루어져 있다. (parameter와 분포의 관계는) </p>
+<p>데이터에서 산술계산을 통해 평균과 표준편차를 구할수 있다. (이 과정에서 Data가 실제로 정규 분포를 따르는지 아닌지 상관없다)</p>
+<p>그렇게 100개의 Data로 추정해낸 평균과 분산이 10과 4라고 하자 </p>
+<blockquote>
+<p>정규분포를 따른다는 가정이 맞다면 우리의 Data 100개가 N(10,4) 와 비슷해야한다.<br>위의 “<strong>비슷</strong>” 하다라는것을 시각적으로 보는 것이 QQplot이다.</p>
+</blockquote>
+<p>Data 100개 vs N(10,4) 이 비슷한지 비교를 어떻게 할까?</p>
+<p>먼저 N(10,4)에 대해서는 알 수 있다. </p>
+<p>pdf를 통해 </p>
+<p>$$<br> f(x) &#x3D; \frac{1}{\sigma\sqrt{2\pi}}<br>  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{!2},\right)<br>$$</p>
+<p>$\mu,\sigma$ 를 10과 2로 넣어서 분포를 구하면 N(10,2^2)의 분포를 정확하게 구할 수 있다.</p>
+<p>N(10,4)의 pdf와 cdf의 정확한 equation을 알고 있기 때문에 확률분포에서 1%의 값이나 32%의 지점의 **수(Number)**를 알 수 있다. </p>
+<p>이 경우에 N(10,4)의 1%의 값과 Data에서 1%의 값은 비슷할수록 좋을 것이다. (또 32%의 경우도 마찬가지다.)</p>
+<p>미리 말하자면 N(10,4)의 1%에 해당하는 수는 5.34 이고 32%에 해당하는 수는 8.13 이다 </p>
+<p><img src="/image/QQplot/Untitled.png" alt="Untitled"></p>
+<ol>
+<li>N(10,4)의 1%값 5.34 와 32%값 8.13이다.</li>
+<li>Data가 마침 100개이기 때문에  Data의 최소값이 1%의 값이라는 걸 알 수 있다. 밑에서 32번째 값은 32%의 값이다.</li>
+</ol>
+<p>먼저 Data 100개의 최소값(&#x3D;Data에서 1%의값) 과 5.34을 비교하면 이 값이 비슷하면 1%끼리 비교에선 정규분포와 비슷하다고 볼 수 있다. </p>
+<p>그렇게 32번째로 작은 값과 N(10,4)의 32%의 값 (&#x3D;8.13)을 비교하고… 계속 모든 Data에 대해서 그 %에 맞는 N(10,4)과 비교 할 수 있을 것이다. </p>
+<p>Data의 1%의 값이 만약에 4.91 이고 32%의 값이 11.2라면 N(10,4)의 1%, 32%의 값과 비교하면 </p>
+<p>2개의 Point에 대해서 비교하면 아래와 같은 QQplot이 나온다. </p>
+<p><img src="/image/QQplot/Untitled1.png" alt="Untitled"></p>
+<p><strong>만약 Data의 32%의 값 11.2의 값이 정규분포의 32%의 값인 8.13의 값과 비슷하면 어떻게 될까?</strong></p>
+<p><img src="/image/QQplot/Untitled2.png" alt="Untitled"></p>
+<p>그림의 빨간선인 y&#x3D;x 에 가까워 질것이다. </p>
+<p>따라서 빨간선에 가까울수록 해당 % 순위에 해당 하는 값이 정답지(여기선 정규분포)와 얼마나 근접할지를 시각적으로 평가 할 수 있다. </p>
+<p>이제 점 2개에서  모든 Data 100개에 대해서 추가하면 나오는것이 QQplot이다. </p>
+<p>참고로 </p>
+<p>위의 예시에서 QQplot을 그리는데에 정규분포여야만 하는 가정이 하나도 없다. </p>
+<p>다시 말해 모든 분포에 대해서 분포적합성의 시각적인 Tool 로써 QQplot을 그려서 평가 할 수 있다.</p>
+<p>Flow 를 정리하면 다음과 같다. </p>
+<ol>
+<li>분포가정)  어떤 분포를 따르는지 먼저 선정한다. ex) Normal , Exponential , Weibull 등등 </li>
+<li>추정) 만약 Weibull이라고 가정했다면 Weibull분포의 모수들을 Data를 토대로 Weibull분포를 추정한다.</li>
+<li>비교) Data의 분포들을 크기 순서대로 나열하고Data의 분위수를 구한다. 만약 N의 데이터에서 n번째 데이터의 분위수는 n&#x2F;N으로 정할수 있다.<br>추정된 Weibull에서 분위수에  해당하는 정답지를 구하고 비교한다.</li>
+</ol>
+<p>아래와 같이 결과가 나온다. </p>
+<ul>
+<li><p>(숨겨진사실)</p>
+<p>  사실 분위수를 n&#x2F;N등으로 구하진 않고 보정을 한 분위수를 사용한다. 이 보정방법또한 여러가지가 존재하긴한다. 모든 것을 먼저 이야기 할 경우 이해에 불필요한 의문을 만들수 있어 생략했다.  또한 최대 값의 경우 대부분의 분포에서 최대값은 Inf가 된다. 이러한 문제도 보정으로 해결한다.</p>
+</li>
+</ul>
+<h3 id="QQplot을-하는-이유"><a href="#QQplot을-하는-이유" class="headerlink" title="QQplot을 하는 이유"></a>QQplot을 하는 이유</h3><p>KS테스트 라든가 AD테스트등의 분포 가정은 P-value를 사용하여 분포가 맞는지 아닌지 판단을 해준다는 장점이 있다. </p>
+<p>그러나 QQplot의 경우 그림이 나오지만 얼마나 어긋났을때 틀린건지 혹은 맞는건지를 보기 애매하다 </p>
+<p>결론 부터 말하면 QQplot 은 분포가 명확한지 아닌지 말해주지 않는다. </p>
+<p>그러나 어떻게 다른지 어떤 부분</p>
+<p>오히려 위에서 언급한 KS나 AD같은 가설검정 들은 결과가 p-vavlue로만 나오기 때문에 그냥 다르다고만 알 수있지 </p>
+<p>어느부분에서 Skew가 있는지 혹은 spark가 있는지 등등은 나오지 않는다.  </p>
+<h4 id="QQplot해석-방법"><a href="#QQplot해석-방법" class="headerlink" title="QQplot해석 방법"></a>QQplot해석 방법</h4>
         </div>
 
         
@@ -299,11 +338,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Raspberry-Pi/"># Raspberry Pi</a>
-                    
-                        <a href="/tags/opencv/"># opencv</a>
-                    
-                        <a href="/tags/motion/"># motion</a>
+                        <a href="/tags/QQplot/"># QQplot</a>
                     
                         
                 </span>
@@ -316,10 +351,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/05/02/QQplot/">QQplot 이란?</a>
             
-            
-            <a class="next" rel="next" href="/2023/04/08/TEST/"></a>
+            <a class="next" rel="next" href="/2023/05/01/Raspberry%20Pi%20%EC%9B%90%EA%B2%A9%EC%9D%B4%EC%9A%A9%20w%20VNC/">Raspberry Pi 원격이용 w VNC</a>
             
         </section>
 
