@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jisoo Choi">
+
+
+
+
+
+<title>QQplot 이란? | ForPolymath</title>
+
+
+
+    <link rel="icon" href="/moon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">CJS bookShelf</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <input id="switch_default" type="checkbox" class="switch_default">
+                    <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">CJS bookShelf</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 다크 모드 상태 확인
+        const currentTheme = window.localStorage.getItem('theme') ? window.localStorage.getItem('theme') : null;
+        const toggleBtn = document.querySelector('.toggleBtn');
+    
+        if (currentTheme) {
+            // 페이지가 다크 모드인 경우
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>'; // 다크 모드 아이콘 추가
+            } else {
+                document.body.classList.remove('dark-theme');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>'; // 라이트 모드 아이콘 추가
+            }
+        }
+    
+        // 토글 버튼 클릭 이벤트 리스너 추가
+        document.getElementById('switch_default').addEventListener('change', function (e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-theme');
+                window.localStorage.setItem('theme', 'dark');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>'; // 다크 모드 아이콘으로 변경
+            } else {
+                document.body.classList.remove('dark-theme');
+                window.localStorage.setItem('theme', 'light');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>'; // 라이트 모드 아이콘으로 변경
+            }
+        });
+    });
+    </script>
+    
+
+    <style>
+        .toggle-container {
+            display: flex;
+            align-items: center; /* 세로 방향 중앙 정렬 */
+        }
+    
+        .toggle-icon {
+            margin-right: 8px; /* 아이콘과 토글 버튼 사이 간격 조정 */
+        }
+    </style>
+    
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">QQplot 이란?</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jisoo Choi</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 2, 2023&nbsp;&nbsp;18:04:51</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Statistic/">Statistic</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="QQ-plot-이란"><a href="#QQ-plot-이란" class="headerlink" title="QQ-plot 이란?"></a>QQ-plot 이란?</h2><p> Data가  특정 분포를 따르는지 시각화 분석을 하는 Plot이다. </p>
+<h3 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h3><p>만약 데이터 100개를 관측하였는데 정규분포를 따르는지 궁금하다고 하자</p>
+<p>정규분포의 parameter는 2가지 $\mu,\sigma$ 로 이루어져 있다. (parameter와 분포의 관계는) </p>
+<p>데이터에서 산술계산을 통해 평균과 표준편차를 구할수 있다. (이 과정에서 Data가 실제로 정규 분포를 따르는지 아닌지 상관없다)</p>
+<p>그렇게 100개의 Data로 추정해낸 평균과 분산이 10과 4라고 하자 </p>
+<blockquote>
+<p>정규분포를 따른다는 가정이 맞다면 우리의 Data 100개가 N(10,4) 와 비슷해야한다.<br>위의 “<strong>비슷</strong>” 하다라는것을 시각적으로 보는 것이 QQplot이다.</p>
+</blockquote>
+<p>Data 100개 vs N(10,4) 이 비슷한지 비교를 어떻게 할까?</p>
+<p>먼저 N(10,4)에 대해서는 알 수 있다. </p>
+<p>pdf를 통해 </p>
+<p>$$<br> f(x) &#x3D; \frac{1}{\sigma\sqrt{2\pi}}<br>  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{!2},\right)<br>$$</p>
+<p>$\mu,\sigma$ 를 10과 2로 넣어서 분포를 구하면 N(10,2^2)의 분포를 정확하게 구할 수 있다.</p>
+<p>N(10,4)의 pdf와 cdf의 정확한 equation을 알고 있기 때문에 확률분포에서 1%의 값이나 32%의 지점의 **수(Number)**를 알 수 있다. </p>
+<p>이 경우에 N(10,4)의 1%의 값과 Data에서 1%의 값은 비슷할수록 좋을 것이다. (또 32%의 경우도 마찬가지다.)</p>
+<p>미리 말하자면 N(10,4)의 1%에 해당하는 수는 5.34 이고 32%에 해당하는 수는 8.13 이다 </p>
+<p><img src="/image/QQplot/Untitled.png" alt="Untitled"></p>
+<ol>
+<li>N(10,4)의 1%값 5.34 와 32%값 8.13이다.</li>
+<li>Data가 마침 100개이기 때문에  Data의 최소값이 1%의 값이라는 걸 알 수 있다. 밑에서 32번째 값은 32%의 값이다.</li>
+</ol>
+<p>먼저 Data 100개의 최소값(&#x3D;Data에서 1%의값) 과 5.34을 비교하면 이 값이 비슷하면 1%끼리 비교에선 정규분포와 비슷하다고 볼 수 있다. </p>
+<p>그렇게 32번째로 작은 값과 N(10,4)의 32%의 값 (&#x3D;8.13)을 비교하고… 계속 모든 Data에 대해서 그 %에 맞는 N(10,4)과 비교 할 수 있을 것이다. </p>
+<p>Data의 1%의 값이 만약에 4.91 이고 32%의 값이 11.2라면 N(10,4)의 1%, 32%의 값과 비교하면 </p>
+<p>2개의 Point에 대해서 비교하면 아래와 같은 QQplot이 나온다. </p>
+<p><img src="/image/QQplot/Untitled1.png" alt="Untitled"></p>
+<p><strong>만약 Data의 32%의 값 11.2의 값이 정규분포의 32%의 값인 8.13의 값과 비슷하면 어떻게 될까?</strong></p>
+<p><img src="/image/QQplot/Untitled2.png" alt="Untitled"></p>
+<p>그림의 빨간선인 y&#x3D;x 에 가까워 질것이다. </p>
+<p>따라서 빨간선에 가까울수록 해당 % 순위에 해당 하는 값이 정답지(여기선 정규분포)와 얼마나 근접할지를 시각적으로 평가 할 수 있다. </p>
+<p>이제 점 2개에서  모든 Data 100개에 대해서 추가하면 나오는것이 QQplot이다. </p>
+<p>참고로 </p>
+<p>위의 예시에서 QQplot을 그리는데에 정규분포여야만 하는 가정이 하나도 없다. </p>
+<p>다시 말해 모든 분포에 대해서 분포적합성의 시각적인 Tool 로써 QQplot을 그려서 평가 할 수 있다.</p>
+<p>Flow 를 정리하면 다음과 같다. </p>
+<ol>
+<li>분포가정)  어떤 분포를 따르는지 먼저 선정한다. ex) Normal , Exponential , Weibull 등등 </li>
+<li>추정) 만약 Weibull이라고 가정했다면 Weibull분포의 모수들을 Data를 토대로 Weibull분포를 추정한다.</li>
+<li>비교) Data의 분포들을 크기 순서대로 나열하고Data의 분위수를 구한다. 만약 N의 데이터에서 n번째 데이터의 분위수는 n&#x2F;N으로 정할수 있다.<br>추정된 Weibull에서 분위수에  해당하는 정답지를 구하고 비교한다.</li>
+</ol>
+<p>아래와 같이 결과가 나온다. </p>
+<ul>
+<li><p>(숨겨진사실)</p>
+<p>  사실 분위수를 n&#x2F;N등으로 구하진 않고 보정을 한 분위수를 사용한다. 이 보정방법또한 여러가지가 존재하긴한다. 모든 것을 먼저 이야기 할 경우 이해에 불필요한 의문을 만들수 있어 생략했다.  또한 최대 값의 경우 대부분의 분포에서 최대값은 Inf가 된다. 이러한 문제도 보정으로 해결한다.</p>
+</li>
+</ul>
+<h3 id="QQplot을-하는-이유"><a href="#QQplot을-하는-이유" class="headerlink" title="QQplot을 하는 이유"></a>QQplot을 하는 이유</h3><p>KS테스트 라든가 AD테스트등의 분포 가정은 P-value를 사용하여 분포가 맞는지 아닌지 판단을 해준다는 장점이 있다. </p>
+<p>그러나 QQplot의 경우 그림이 나오지만 얼마나 어긋났을때 틀린건지 혹은 맞는건지를 보기 애매하다 </p>
+<p>결론 부터 말하면 QQplot 은 분포가 명확한지 아닌지 말해주지 않는다. </p>
+<p>그러나 어떻게 다른지 어떤 부분</p>
+<p>오히려 위에서 언급한 KS나 AD같은 가설검정 들은 결과가 p-vavlue로만 나오기 때문에 그냥 다르다고만 알 수있지 </p>
+<p>어느부분에서 Skew가 있는지 혹은 spark가 있는지 등등은 나오지 않는다.  </p>
+<h4 id="QQplot해석-방법"><a href="#QQplot해석-방법" class="headerlink" title="QQplot해석 방법"></a>QQplot해석 방법</h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section>
+            <script src="https://utteranc.es/client.js"
+                repo="ddsy999/BlogComment"
+                issue-term="pathname"
+                label="Comments"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </section>
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/QQplot/"># QQplot</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/03/03/TEST/"></a>
+            
+            
+            <a class="next" rel="next" href="/2023/05/01/Raspberry%20Pi%20%EC%9B%90%EA%B2%A9%EC%9D%B4%EC%9A%A9%20w%20VNC/">Raspberry Pi 원격이용 w VNC</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jisoo Choi </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

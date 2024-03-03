@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jisoo Choi">
+
+
+
+
+
+<title>ForPolymath</title>
+
+
+
+    <link rel="icon" href="/moon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">CJS bookShelf</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <input id="switch_default" type="checkbox" class="switch_default">
+                    <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">CJS bookShelf</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 다크 모드 상태 확인
+        const currentTheme = window.localStorage.getItem('theme') ? window.localStorage.getItem('theme') : null;
+        const toggleBtn = document.querySelector('.toggleBtn');
+    
+        if (currentTheme) {
+            // 페이지가 다크 모드인 경우
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>'; // 다크 모드 아이콘 추가
+            } else {
+                document.body.classList.remove('dark-theme');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>'; // 라이트 모드 아이콘 추가
+            }
+        }
+    
+        // 토글 버튼 클릭 이벤트 리스너 추가
+        document.getElementById('switch_default').addEventListener('change', function (e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-theme');
+                window.localStorage.setItem('theme', 'dark');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>'; // 다크 모드 아이콘으로 변경
+            } else {
+                document.body.classList.remove('dark-theme');
+                window.localStorage.setItem('theme', 'light');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>'; // 라이트 모드 아이콘으로 변경
+            }
+        });
+    });
+    </script>
+    
+
+    <style>
+        .toggle-container {
+            display: flex;
+            align-items: center; /* 세로 방향 중앙 정렬 */
+        }
+    
+        .toggle-icon {
+            margin-right: 8px; /* 아이콘과 토글 버튼 사이 간격 조정 */
+        }
+    </style>
+    
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jisoo Choi</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 3, 2024&nbsp;&nbsp;8:02:59</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>$\frac{\partial}{\partial \beta_j} |X\beta|^2 &#x3D; \frac{\partial}{\partial \beta_j} (X\beta)^T(X\beta) &#x3D; 2X_j^T(X\beta)$</p>
+<p>$\frac{\partial}{\partial \beta_j} |X\beta| &#x3D; \frac{1}{|X\beta|}\frac{\partial}{\partial \beta_j} (X\beta)^T(X\beta) &#x3D; \frac{2X_j^T(X\beta)}{2|X\beta|} &#x3D; \frac{X_j^T(X\beta)}{|X\beta|}$</p>
+<p>$\frac{\partial}{\partial \beta_j} Y^TX\beta &#x3D; Y^TX_j$</p>
+<p>$\frac{\partial}{\partial \beta_j} f(\beta) &#x3D; \frac{\frac{\partial}{\partial \beta_j} (Y^TX\beta)|X\beta|^2 - (Y^TX\beta)\frac{\partial}{\partial \beta_j} |X\beta|^2}{|X\beta|^4}$</p>
+<p>$(Y^TX_j)|X\beta|^2 - (Y^TX\beta) \frac{X_j^T(X\beta)}{|X\beta|}$</p>
+<p>$\frac{\partial}{\partial \beta_j} |X\beta|^2$ </p>
+<p>$\frac{ Y^tX\beta*Y^tX\beta}{\beta^tX^tX\beta}$</p>
+<p>$\frac{\partial}{\partial \beta_j} \left(\frac{(Y^TX\beta)^2}{\beta^tX^tX\beta}\right)$</p>
+<p>$T &#x3D; \max { \sqrt{n} |\bar{X} - \theta_0|, \sqrt{n} |\bar{X} - (1 - \theta_0)|}$</p>
+<p>$A &#x3D; \left[a_1, b_1\right] \cup \left[a_2, b_2\right] &#x3D; \left[\theta_0 - c_1, \theta_0 + c_2\right] \cup \left(-\infty, \theta_0 - c_1\right] \cup \left[\theta_0 + c_2, \infty\right)$</p>
+<p>(1) 풀이 2종오류의 확률을 구하라 유의수준 5%  </p>
+<p>2종오류확률은 $P(H_0 채택|H_1 이 맞는 상황)$ 이다, </p>
+<p>상황을 점검하면 아래와 같다. </p>
+<p>위 문제에서 귀무가설과 대립가설은 $H_0 &#x3D; 1500$ , $H_1&#x3D;1600$ 이다 </p>
+<p>기각역은 검정통계량이 $z_{\alpha_{0.05}}$ 보다 작은거 </p>
+<p>$H_0$ 검정 통계량을 $T$ 라고하면 $T &#x3D; \frac{\bar{x}-1500}{\frac{200}{\sqrt{n}}}$ 이고 </p>
+<p>정리하면 $H_0$ 기각역은 ${ T&gt; z_{\alpha_{0.05}}}$ 이다. </p>
+<p>이제 문제를 풀면 </p>
+<p>$$<br>\begin{aligned}<br>P(H_0 채택|H_1 이 맞는 상황) &amp;&#x3D;  P(H_0\ 기각역에 \ 안속함 , \mu &#x3D; 1600) \<br>&amp; &#x3D; P(  T \leq z_{\alpha_{0.05}} ,\mu &#x3D; 1600 ) \<br>&amp; &#x3D; P( \frac{\bar{x}-1500}{\frac{200}{\sqrt{n}}} \leq z_{\alpha_{0.05}} ,\mu &#x3D; 1600 ) \<br>그러나 H_1 상에서 진짜 평균은 1600 이고 &amp;이상황이면 -1500 을하면 정규분포가 되는게아니라 -1600을 해야 정규 분포를 따른다.\<br> &amp;&#x3D; P( \frac{\bar{x}-1600+100}{\frac{200}{\sqrt{n}}} \leq z_{\alpha_{0.05}} ,\mu &#x3D; 1600 ) \<br>&amp;&#x3D; P( Z+\frac{100}{\frac{200}{\sqrt{30}}} \leq z_{\alpha_{0.05}}  ) \<br>&amp;&#x3D; P( Z+\frac{\sqrt{30}}{2} \leq z_{\alpha_{0.05}}  ) \</p>
+<p>&amp;&#x3D; P( Z \leq z_{\alpha_{0.05}} - \frac{\sqrt{30}}{2} ) \<br>&amp;&#x3D; P( Z \leq 1.645-  2.738613 ) \<br>\end{aligned}<br>$$</p>
+<p>$P(H_0 채택|H_1 이 맞는 상황)$</p>
+<p>import cv2<br>import numpy as np<br>def tracking():<br>    cap &#x3D; cv2.VideoCapture(0)<br>    cap.set(3,320)<br>    cap.set(4,240)<br>    while True:<br>        ret,frame &#x3D; cap.read()<br>        cv2.imshow(‘video’,frame)<br>        if cv2.waitKey(1)&amp; 0xff &#x3D;&#x3D; ord(‘q’):<br>            break<br>    cv2.destroyAllwindows()<br>tracking()</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section>
+            <script src="https://utteranc.es/client.js"
+                repo="ddsy999/BlogComment"
+                issue-term="pathname"
+                label="Comments"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </section>
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/05/02/QQplot/">QQplot 이란?</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jisoo Choi </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
